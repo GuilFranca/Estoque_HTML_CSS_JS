@@ -34,6 +34,7 @@ btnCadastrar.addEventListener("click", function () {
                     <div class="card__botoes">
                         <button class="tela_produtos__btn_add">+</button>
                         <button class="tela_produtos__btn_remove">-</button>
+                        <button class="tela_produtos__btn_edit">E</button>
                         <button class="tela_produtos__btn_clean">X</button>
                     </div>
                 </div>`
@@ -52,16 +53,15 @@ btnCadastrar.addEventListener("click", function () {
 // Seleção dos elementos do DOM
 const modalEdicao = document.getElementById('modal_edicao');
 const cancelarEdicao = document.getElementById('cancelar_edicao');
-const btnsEdicao = document.querySelectorAll('.tela_produtos__btn_edit');
+const telaProdutos = document.querySelector('.tela_produtos__card'); // Seleciona a div que contêm os cards de produtos
 const salvaEdicao = document.getElementById('salvar'); // Corrigido para 'Salvar'
 
-// Adiciona evento de clique para cada botão de edição
-btnsEdicao.forEach(btnEdicao => {
-    btnEdicao.addEventListener("click", function () {
+telaProdutos.addEventListener("click", function(event) {
+    if(event.target.classList.contains('tela_produtos__btn_edit')) {
         modalEdicao.showModal();
 
         // Encontra o card do produto específico que foi clicado
-        const cardProdutoEdicao = btnEdicao.closest('.card__produto');
+        const cardProdutoEdicao = event.target.closest('.card__produto');
         const cardProdutoEdicaoNome = cardProdutoEdicao.querySelector('.descricao__nome');
         const cardProdutoEdicaoQtd = cardProdutoEdicao.querySelector('.descricao__qtd');
 
@@ -75,8 +75,8 @@ btnsEdicao.forEach(btnEdicao => {
             cardProdutoEdicaoQtd.innerText = `Qtd: ${document.querySelector('#qtd_edicao').value}`;
             modalEdicao.close();
         }
-    });
-});
+    }
+})
 
 // Fecha o modal ao cancelar a edição
 cancelarEdicao.onclick = function () {
@@ -117,7 +117,6 @@ btnsSaida.forEach(btnSaida => {
 
 
 // Clean/Apagar produtos
-const telaProdutos = document.querySelector('.tela_produtos__card'); // Seleciona a div que contêm os cards de produtos
 // Adiciona um ouvinte de evento de clique diretamente na div pai
 // Isso se chama "event delegation" (delegação de evento)
 // Assim, não importa se os elementos filhos foram adicionados depois, ele ainda consegue detectar o clique
