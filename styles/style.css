@@ -24,9 +24,8 @@ main {
 
 .tela_produtos__card {
     display: flex;
-    gap: 24px;
-    border: 1px solid black;
-    padding: 4px;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .card__botoes {
@@ -44,4 +43,13 @@ main {
 
 .descricao__span {
     color: rgb(60, 59, 59)
+}
+
+.card__produto {
+    display: flex;
+    gap: 24px;
+    border: 1px solid black;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
 }
