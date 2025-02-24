@@ -13,6 +13,41 @@ cancelarCadastro.onclick = function () {
 // Fim modal
 
 
+
+// início cadastro de produtos
+const btnCadastrar = document.getElementById('cadastrar');
+
+btnCadastrar.addEventListener("click", function () {
+    let nomeProduto = document.getElementById('nome').value;
+    let qtdProduto = document.getElementById('qtd').value;
+
+    const telaProdutos = document.querySelector('.tela_produtos__card');
+
+    if (nomeProduto && qtdProduto) {
+        telaProdutos.innerHTML = telaProdutos.innerHTML + `<div class="card__produto">
+                    <div class="card__descricao">
+                        <h1 class="descricao__nome"><span class="descricao__span">Nome:</span> ${nomeProduto}</h1>
+                        <p class="descricao__qtd"><span class="descricao__span">Qtd:</span> ${qtdProduto}</p>
+                        
+                    </div>
+
+                    <div class="card__botoes">
+                        <button class="tela_produtos__btn_add">+</button>
+                        <button class="tela_produtos__btn_remove">-</button>
+                        <button class="tela_produtos__btn_clean">X</button>
+                    </div>
+                </div>`
+        modal.close();
+        // Apaga os valores dentro do input
+        document.getElementById('nome').value = '';
+        document.getElementById('qtd').value = '';
+    }
+
+})
+// Fim cadastro de produtos
+
+
+
 // início edição
 // Seleção dos elementos do DOM
 const modalEdicao = document.getElementById('modal_edicao');
@@ -48,40 +83,6 @@ cancelarEdicao.onclick = function () {
     modalEdicao.close();
 };
 // fim edição
-
-
-
-// início cadastro de produtos
-const btnCadastrar = document.getElementById('cadastrar');
-
-btnCadastrar.addEventListener("click", function () {
-    let nomeProduto = document.getElementById('nome').value;
-    let qtdProduto = document.getElementById('qtd').value;
-
-    const telaProdutos = document.querySelector('.tela_produtos__card');
-
-    if (nomeProduto && qtdProduto) {
-        telaProdutos.innerHTML = telaProdutos.innerHTML + `<div class="card__produto">
-                    <div class="card__descricao">
-                        <h1 class="descricao__nome"><span class="descricao__span">Nome:</span> ${nomeProduto}</h1>
-                        <p class="descricao__qtd"><span class="descricao__span">Qtd:</span> ${qtdProduto}</p>
-                        
-                    </div>
-
-                    <div class="card__botoes">
-                        <button class="tela_produtos__btn_add">+</button>
-                        <button class="tela_produtos__btn_remove">-</button>
-                        <button class="tela_produtos__btn_clean">X</button>
-                    </div>
-                </div>`
-        modal.close();
-        // Apaga os valores dentro do input
-        document.getElementById('nome').value = '';
-        document.getElementById('qtd').value = '';
-    }
-
-})
-// Fim cadastro de produtos
 
 
 
