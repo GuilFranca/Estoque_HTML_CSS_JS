@@ -34,7 +34,7 @@ main {
     gap: 4px;
 }
 
-.tela_produtos__btn_add, .tela_produtos__btn_remove, .tela_produtos__btn_clean {
+.tela_produtos__btn_add, .tela_produtos__btn_remove, .tela_produtos__btn_clean, .tela_produtos__btn_edit {
     height: 24px;
     width: 25px;
     margin: auto;

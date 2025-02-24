@@ -1,7 +1,7 @@
 // início modal
 const btnCadastro = document.querySelector('.controle__btn_cadastro_produto');
 const modal = document.getElementById('modal');
-const cancelarCadastro = document.getElementById('cancelar');
+const cancelarCadastro = document.getElementById('cancelar_cadastro');
 
 btnCadastro.onclick = function() {
     modal.showModal();
@@ -12,7 +12,32 @@ cancelarCadastro.onclick = function() {
 }
 // Fim modal
 
+// início edição
+const modalEdicao = document.getElementById('modal_edicao');
+const cancelarEdicao = document.getElementById('cancelar_edicao');
+const btnsEdicao = document.querySelectorAll('.tela_produtos__btn_edit');
 
+btnsEdicao.forEach(btnEdicao => {
+    btnEdicao.addEventListener("click", function() {
+
+        modalEdicao.showModal();
+
+        // Encontra o card do produto específico que foi clicado
+        const cardProdutoEdicao = btnEdicao.closest('.card__produto');
+        const cardProdutoEdicaoNome = cardProdutoEdicao.querySelector('.descricao__nome');
+        const cardProdutoEdicaoQtd = cardProdutoEdicao.querySelector('.descricao__qtd');
+
+        document.querySelector('#nome_edicao').value = cardProdutoEdicaoNome.innerText.split(': ')[1];
+        document.querySelector('#qtd_edicao').value = cardProdutoEdicaoQtd.innerText.split(': ')[1];
+
+    })
+})
+
+cancelarEdicao.onclick = function() {
+    modalEdicao.close();
+}
+
+// fim edição
 
 // início cadastro de produtos
 const btnCadastrar = document.getElementById('cadastrar');
