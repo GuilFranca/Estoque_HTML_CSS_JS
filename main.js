@@ -71,9 +71,13 @@ telaProdutos.addEventListener("click", function(event) {
 
         // Adiciona evento de clique para salvar a edição
         salvaEdicao.onclick = function() {
-            cardProdutoEdicaoNome.innerText = `Nome: ${document.querySelector('#nome_edicao').value}`;
-            cardProdutoEdicaoQtd.innerText = `Qtd: ${document.querySelector('#qtd_edicao').value}`;
-            modalEdicao.close();
+            if(document.querySelector('#nome_edicao').value && document.querySelector('#qtd_edicao').value){
+                cardProdutoEdicaoNome.innerText = `Nome: ${document.querySelector('#nome_edicao').value}`;
+                cardProdutoEdicaoQtd.innerText = `Qtd: ${document.querySelector('#qtd_edicao').value}`;
+                modalEdicao.close();
+            } else {
+                alert('Todos os campos precisam ser preenchidos!');
+            }
         }
     }
 })
