@@ -95,27 +95,27 @@ const btnsEntrada = document.querySelectorAll('.tela_produtos__btn_add');
 const btnsSaida = document.querySelectorAll('.tela_produtos__btn_remove');
 const btnsClean = document.querySelectorAll('.tela_produtos__btn_clean');
 
-btnsEntrada.forEach(btnEntrada => {
-    btnEntrada.addEventListener("click", function () {
-        const cardProduto = btnEntrada.closest('.card__produto'); // Pega o card pai mais próximo
+telaProdutos.addEventListener("click", function(event) {
+    if(event.target.classList.contains('tela_produtos__btn_add')) {
+        const cardProduto = event.target.closest('.card__produto'); // Pega o card pai mais próximo
         const qtdProduto = cardProduto.querySelector('.descricao__qtd'); // Pega a qtd dentro desse card
 
         // Extrai apenas o número da quantidade e incrementa
         const qtdAtual = parseInt(qtdProduto.innerText.split(':')[1]);
         qtdProduto.innerHTML = `<span class="descricao__span">Qtd:</span> ${qtdAtual + 1}`;
-    });
-});
+    }
+})
 
-btnsSaida.forEach(btnSaida => {
-    btnSaida.addEventListener("click", function () {
-        const cardProduto = btnSaida.closest('.card__produto'); // Pega o card pai mais próximo
+telaProdutos.addEventListener("click", function(event) {
+    if(event.target.classList.contains('tela_produtos__btn_remove')) {
+        const cardProduto = event.target.closest('.card__produto'); // Pega o card pai mais próximo
         const qtdProduto = cardProduto.querySelector('.descricao__qtd'); // Pega a qtd dentro desse card
 
         // Extrai apenas o número da quantidade e incrementa
         const qtdAtual = parseInt(qtdProduto.innerText.split(':')[1]);
         qtdProduto.innerHTML = `<span class="descricao__span">Qtd:</span> ${qtdAtual - 1}`;
-    });
-});
+    }
+})
 // fim Entrada e saída
 
 
